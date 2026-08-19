@@ -1,0 +1,35 @@
+CREDIT RISK SCORECARD & PD MODEL — SUMMARY REPORT
+====================================================
+
+Dataset: UCI Statlog German Credit, 1000 accounts, default rate 30.0%
+
+-- Information Value ranking (top 8) --
+         feature       IV  n_bins                                strength
+ checking_status 0.659056       4 Suspiciously strong — check for leakage
+  credit_history 0.290832       5                        Medium predictor
+ duration_months 0.213164       5                        Medium predictor
+  savings_status 0.187938       5                        Medium predictor
+         purpose 0.163613      10                        Medium predictor
+        property 0.111799       4                        Medium predictor
+   credit_amount 0.092127       5                          Weak predictor
+employment_since 0.085656       5                          Weak predictor
+
+Features retained for the model (IV >= 0.10): ['checking_status', 'credit_history', 'duration_months', 'savings_status', 'purpose', 'property']
+
+-- Model performance (held-out test set) --
+  AUC: 0.801   KS statistic: 0.497
+
+-- Logistic regression coefficients (on WOE scale) --
+savings_status_woe    -0.883
+duration_months_woe   -0.810
+purpose_woe           -0.807
+checking_status_woe   -0.783
+credit_history_woe    -0.730
+property_woe          -0.683
+
+-- IFRS 9 staging & Expected Credit Loss --
+       accounts  total_EAD  total_ECL  coverage_ratio
+stage                                                
+1           311     835133   38713.62            0.05
+2           389    1254687  406478.30            0.32
+3           300    1181438  531647.10            0.45
